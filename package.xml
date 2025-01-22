@@ -3,7 +3,7 @@
 <package format="3">
   <name>serial_hw_interface</name>
   <version>0.0.0</version>
-  <description>Generic ros2_control serial-based hardware interface template.</description>
+  <description>Generic serial-based ros2_control hardware interface template.</description>
   <maintainer email="hanskarlo@github.com">hanskarlo</maintainer>
   <license>Apache 2.0</license>
 

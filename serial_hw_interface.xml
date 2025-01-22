@@ -1,0 +1,10 @@
+<library path="serial_hw_interface">
+    <class name="serial_hw_interface/SerialHardwareInterface"
+        type="serial_hw_interface::SerialHardwareInterface"
+        base_class_type="hardware_interface::SystemInterface"
+    >
+        <description>
+            Generic serial-based ros2_control hardware interface template.
+        </description>
+    </class>
+</library>
