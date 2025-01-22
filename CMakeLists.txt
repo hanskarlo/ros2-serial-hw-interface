@@ -8,8 +8,56 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(pluginlib REQUIRED)
 find_package(hardware_interface REQUIRED)
 find_package(serial REQUIRED)
+
+
+add_library(
+    ${PROJECT_NAME}
+    SHARED
+    src/serial_hw_if.cpp
+)
+
+target_include_directories(
+    ${PROJECT_NAME}
+    PRIVATE
+    include
+)
+
+ament_target_dependencies(
+    ${PROJECT_NAME}
+    rclcpp
+    pluginlib
+    hardware_interface
+    serial
+)
+
+pluginlib_export_plugin_description_file(hardware_interface serial_hw_interface.xml)
+
+
+install(
+    TARGETS
+    ${PROJECT_NAME}
+    DESTINATION lib
+)
+
+install(
+    DIRECTORY
+    include
+    DESTINATION include
+)
+
+ament_export_include_directories( include )
+
+ament_export_libraries( ${PROJECT_NAME} )
+
+ament_export_dependencies(
+    rclcpp
+    pluginlib
+    hardware_interface
+    serial
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
